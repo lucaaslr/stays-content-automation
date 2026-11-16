@@ -1,0 +1,85 @@
+schema_version: "1.0"
+
+login:
+  username_selectors:
+    - "input[name='login']"
+    - "input[name='email']"
+    - "input[name='username']"
+    - "input[type='email']"
+    - "input#login"
+    - "input#email"
+  password_selectors:
+    - "input[name='password']"
+    - "input[name='senha']"
+    - "input[type='password']"
+    - "input#password"
+  submit_selectors:
+    - "button[type='submit']"
+    - "input[type='submit']"
+    - "button:has-text('Entrar')"
+    - "button:has-text('Login')"
+    - "button:has-text('Acessar')"
+  logged_in_indicators:
+    - "[data-testid='user-menu']"
+    - ".user-profile"
+    - "a[href*='logout']"
+    - "header#header"
+    - "[id^='main-menu-item-']"
+  captcha_or_mfa_indicators:
+    - "iframe[src*='recaptcha']"
+    - "iframe[src*='hcaptcha']"
+    - "iframe[src*='turnstile']"
+    - ".g-recaptcha"
+    - ".h-captcha"
+    - "input[name*='otp']"
+    - "input[name*='mfa']"
+    - "input[name*='two_factor']"
+
+navigation:
+  descriptive_content_selectors:
+    - "a:has-text('Conteúdo descritivo')"
+    - "button:has-text('Conteúdo descritivo')"
+    - "[role='tab']:has-text('Conteúdo descritivo')"
+    - "li:has-text('Conteúdo descritivo')"
+    - "[data-section='descriptive-content']"
+  custom_fields_section_selectors:
+    - "section:has-text('Campos personalizados')"
+    - "div.panel:has-text('Campos personalizados')"
+    - "div.card:has-text('Campos personalizados')"
+    - "[data-section='custom-fields']"
+    - "#custom-fields"
+    - "h2:has-text('Campos personalizados')"
+    - "h3:has-text('Campos personalizados')"
+    - "h4:has-text('Campos personalizados')"
+  language_tab_pt_br_selectors:
+    - "button:has-text('Português')"
+    - "a:has-text('pt_BR')"
+    - "a:has-text('PT')"
+    - "[data-lang='pt_BR']"
+
+actions:
+  # Escopo restrito ao formulário "Campos personalizados": a página do imóvel tem outros
+  # formulários com botão "Salvar" (ex.: Título/descrição) que não devem ser acionados.
+  save_button_selectors:
+    - "[data-testid='save-custom-fields']"
+    - "form:has(h4:has-text('Campos personalizados')) button[type='submit']"
+    - "form:has(h4:has-text('Campos personalizados')) button:has-text('Salvar')"
+  # Aviso exibido após salvar (some em poucos segundos). A confirmação principal é a
+  # resposta HTTP do POST /jsonrpc sem erro. ".alert-success" foi removido: a página do
+  # imóvel exibe um selo "AI" com essa classe permanentemente.
+  # O botão "Salvar" do Stays NÃO some após salvar; não usar como critério.
+  success_message_selectors:
+    - "text=Salvo com sucesso"
+    - ".toast-success"
+    - "[role='alert']:has-text('sucesso')"
+    - "[role='status']:has-text('Salvo')"
+    - "div:has-text('Alterações salvas com sucesso')"
+    - "div:has-text('Salvo com sucesso')"
+
+field_overrides:
+  # Mapeamentos explícitos opcionais por field_key caso um campo específico no Stays
+  # possua seletor customizado descoberto pelo modo `inspect`.
+  # Exemplo:
+  # property_address:
+  #   selector: "textarea[name='custom_property_address']"
+  {}

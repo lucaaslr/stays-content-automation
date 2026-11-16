@@ -1,0 +1,26 @@
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Sessões de navegador e estados de autenticação
+.session/
+storage_state.json
+*.cookies.json
+
+# Artefatos de execução e logs
+artifacts/
+*.log
+
+# Ambientes virtuais e caches Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/

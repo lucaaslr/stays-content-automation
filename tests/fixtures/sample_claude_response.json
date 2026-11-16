@@ -1,0 +1,89 @@
+{
+  "property": {
+    "target_url": "https://ssmt.stays.com.br/i/apartment/AB25I/setup",
+    "property_id": "AB25I",
+    "source_type": "file",
+    "source_reference": "examples/entrada_exemplo.txt"
+  },
+  "fields": [
+    {
+      "field_key": "property_address",
+      "stays_label": "Endereço da Propriedade",
+      "value": "Estrada Geral do Rio Bonito, nº 1450, Bairro Rio Bonito, Urubici - SC, CEP 88650-000.",
+      "status": "found",
+      "confidence": 0.99,
+      "sensitive": false,
+      "evidence": [
+        {
+          "source": "source_file",
+          "excerpt": "Endereço: Estrada Geral do Rio Bonito, nº 1450, Bairro Rio Bonito, Urubici - SC, CEP 88650-000."
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "field_key": "google_maps_url",
+      "stays_label": "Abrir no Google Maps",
+      "value": "https://maps.google.com/?q=-28.0154,-49.5921",
+      "status": "found",
+      "confidence": 0.98,
+      "sensitive": false,
+      "evidence": [
+        {
+          "source": "source_file",
+          "excerpt": "Mapa: https://maps.google.com/?q=-28.0154,-49.5921"
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "field_key": "wifi_and_electronics",
+      "stays_label": "Wi-fi e dispositivos eletrônicos",
+      "value": "Rede Wi-Fi: CabanaVistaSerra_5G | Senha do Wi-Fi: Serra@2026! | Velocidade: 300 Mbps fibra óptica.",
+      "status": "found",
+      "confidence": 0.96,
+      "sensitive": true,
+      "evidence": [
+        {
+          "source": "source_file",
+          "excerpt": "Rede Wi-Fi: CabanaVistaSerra_5G | Senha do Wi-Fi: Serra@2026!"
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "field_key": "access_instructions",
+      "stays_label": "Instruções de Acesso",
+      "value": "Cofre lateral com código do cofre: 4829. Fechadura digital com senha temporária: 91735#",
+      "status": "found",
+      "confidence": 0.95,
+      "sensitive": true,
+      "evidence": [
+        {
+          "source": "source_file",
+          "excerpt": "código do cofre: 4829 ... senha temporária: 91735#"
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "field_key": "dot_placeholder",
+      "stays_label": ".",
+      "value": null,
+      "status": "missing",
+      "confidence": 0.0,
+      "sensitive": false,
+      "evidence": [],
+      "warnings": []
+    }
+  ],
+  "summary": {
+    "total_fields": 37,
+    "found": 4,
+    "missing": 33,
+    "conflicting": 0,
+    "requires_review": 0,
+    "blocked_sensitive": 0,
+    "invalid_format": 0
+  }
+}

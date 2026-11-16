@@ -1,0 +1,511 @@
+schema_version: "1.0"
+expected_count: 36
+divergence_note: >
+  O requisito menciona 36 campos personalizados, porém a especificação oficial lista
+  37 entradas distintas (incluindo o campo "." na posição 31). Nenhum campo foi
+  excluído silenciosamente; todos os 37 campos são rastreados e auditados.
+
+fields:
+  - field_key: "post_booking_notice"
+    stays_label: "Esteja Ciente (Pós reserva)"
+    description: "informações importantes que o hóspede deve saber após a reserva."
+    instructions: "Resuma avisos essenciais pós-reserva confirmados na fonte (ex.: necessidade de envio de documentos, regras críticas de chegada ou taxas obrigatórias informadas)."
+    aliases:
+      - "Esteja Ciente (Pos reserva)"
+      - "Esteja Ciente"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "property_address"
+    stays_label: "Endereço da Propriedade"
+    description: "endereço completo da propriedade."
+    instructions: "Informe exclusivamente o endereço físico encontrado na fonte (logradouro, número, complemento, bairro, cidade, UF, CEP). Não invente números ou CEPs ausentes."
+    aliases:
+      - "Endereco da Propriedade"
+      - "Endereço do Imóvel"
+    field_type: "text"
+    sensitive: false
+    required: true
+    max_length: 500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "location_notes"
+    stays_label: "Observação para encontrar o imóvel"
+    description: "dicas e instruções para localizar o imóvel."
+    instructions: "Inclua pontos de referência, orientações de chegada, nome do edifício/condomínio ou instruções de acesso rodoviário presentes na fonte."
+    aliases:
+      - "Observacao para encontrar o imovel"
+      - "Como chegar"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "google_maps_url"
+    stays_label: "Abrir no Google Maps"
+    description: "somente o link completo do Google Maps."
+    instructions: "Retorne SOMENTE a URL válida do Google Maps (https://maps.google... ou https://goo.gl/maps/... ou https://maps.app.goo.gl/...). Não adicione nenhum texto antes ou depois."
+    aliases:
+      - "Link Google Maps"
+      - "Google Maps"
+    field_type: "url"
+    sensitive: false
+    required: false
+    max_length: 500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "checkin_instructions"
+    stays_label: "Instruções para check-in"
+    description: "instruções e regras de check-in, exceto informações sensíveis de self check-in."
+    instructions: "Descreva os procedimentos de chegada, recepção ou portaria sem expor senhas de fechaduras ou códigos secretos (que pertencem a Instruções de Acesso)."
+    aliases:
+      - "Instrucoes para check-in"
+      - "Instruções de check-in"
+    field_type: "text"
+    sensitive: false
+    required: true
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "registration_instructions"
+    stays_label: "Instruções para preenchimento"
+    description: "informações necessárias para o preenchimento da ficha cadastral."
+    instructions: "Informe quais dados ou documentos (RG, CPF, placa do veículo, nome completo de todos os hóspedes) são solicitados para preencher a ficha cadastral."
+    aliases:
+      - "Instrucoes para preenchimento"
+      - "Instruções de preenchimento da ficha"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "registration_form"
+    stays_label: "Ficha Cadastral"
+    description: "somente o link da ficha cadastral."
+    instructions: "Retorne SOMENTE a URL direta do formulário/ficha cadastral. Não adicione texto explicativo."
+    aliases:
+      - "Link Ficha Cadastral"
+      - "Formulário Cadastral"
+    field_type: "url"
+    sensitive: false
+    required: false
+    max_length: 500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "access_instructions"
+    stays_label: "Instruções de Acesso"
+    description: "informações sensíveis disponibilizadas apenas no momento adequado, como códigos, senhas ou orientações de acesso."
+    instructions: "Registre códigos de cofre/keybox, senhas de fechadura eletrônica, tags ou procedimentos restritos de self check-in encontrados na fonte. Marque sensitive=true."
+    aliases:
+      - "Instrucoes de Acesso"
+      - "Senhas de Acesso"
+    field_type: "text"
+    sensitive: true
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "local_host"
+    stays_label: "Anfitrião Local"
+    description: "instruções referentes ao responsável operacional do imóvel."
+    instructions: "Informe o nome do anfitrião/responsável operacional local, horários de atendimento presencial/remoto e papel no suporte ao hóspede."
+    aliases:
+      - "Anfitriao Local"
+      - "Responsável Local"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "host_whatsapp_url"
+    stays_label: "WhatsApp Anfitrião"
+    description: "link completo do WhatsApp do responsável operacional."
+    instructions: "Retorne SOMENTE o link completo do WhatsApp (ex.: https://wa.me/... ou https://api.whatsapp.com/send?phone=...). Não inclua texto adicional."
+    aliases:
+      - "WhatsApp Anfitriao"
+      - "Link WhatsApp Anfitrião"
+    field_type: "url"
+    sensitive: true
+    required: false
+    max_length: 500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "common_areas"
+    stays_label: "A propriedade, dependências comuns"
+    description: "informações sobre áreas e espaços comuns do condomínio, pousada ou propriedade."
+    instructions: "Descreva de forma objetiva as áreas compartilhadas (piscina coletiva, salão de jogos, academia, jardim, portaria, regras de uso das áreas comuns)."
+    aliases:
+      - "A propriedade, dependencias comuns"
+      - "Dependências comuns"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "general_amenities"
+    stays_label: "Comodidades gerais"
+    description: "resumo objetivo das comodidades, sem linguagem promocional excessiva."
+    instructions: "Liste as comodidades disponíveis na unidade de maneira direta e factual, eliminando adjetivos publicitários exagerados."
+    aliases:
+      - "Comodidades"
+      - "Itens de comodidade"
+    field_type: "text"
+    sensitive: false
+    required: true
+    max_length: 2500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "kitchen_and_bbq"
+    stays_label: "Cozinha e churrasqueira"
+    description: "itens disponíveis e respectivas instruções ou limitações de uso."
+    instructions: "Relacione eletrodomésticos, utensílios de cozinha, tipo de fogão/forno, presença de churrasqueira (privativa ou coletiva), espetos/grelha e regras de limpeza."
+    aliases:
+      - "Cozinha e Churrasqueira"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "rooms_beds_climate"
+    stays_label: "Quartos, camas e climatização"
+    description: "distribuição dos quartos e banheiros, tipos de camas e ambientes climatizados."
+    instructions: "Detalhe a quantidade de quartos, suítes e banheiros, configuração exata de camas/colchões em cada cômodo e presença de ar-condicionado, ventilador ou aquecedor."
+    aliases:
+      - "Quartos, camas e climatizacao"
+      - "Configuração dos quartos"
+    field_type: "text"
+    sensitive: false
+    required: true
+    max_length: 2500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "accessibility_and_safety"
+    stays_label: "Acessibilidade e segurança"
+    description: "andar, elevador ou escada, acesso para cadeirantes, telas de proteção, câmeras externas e outros recursos de segurança."
+    instructions: "Informe andar do imóvel, existência de escadas ou elevador, rampas, telas de proteção em janelas/sacadas, câmeras em áreas externas, extintores ou cercas."
+    aliases:
+      - "Acessibilidade e seguranca"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "parking"
+    stays_label: "Estacionamento"
+    description: "disponibilidade, tipo, quantidade, dimensões, identificação e regras de uso das vagas."
+    instructions: "Especifique número de vagas, se são cobertas ou descobertas, fixas ou rotativas, numeração da vaga, porte máximo de veículo e regras de estacionamento."
+    aliases:
+      - "Vaga de garagem"
+      - "Garagem e estacionamento"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "bed_and_bath_linen"
+    stays_label: "Rouparia de cama e banho"
+    description: "disponibilidade, quantidade, condições de troca, cobertores, travesseiros e toalhas."
+    instructions: "Informe se o imóvel fornece lençóis, fronhas, cobertores, edredons, travesseiros e toalhas de banho/rosto/piscina, bem como quantidades e políticas de troca."
+    aliases:
+      - "Enxoval de cama e banho"
+      - "Roupas de cama e banho"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "wifi_and_electronics"
+    stays_label: "Wi-fi e dispositivos eletrônicos"
+    description: "rede, velocidade, orientações de uso e dispositivos eletrônicos. Dados sensíveis devem ser tratados com proteção."
+    instructions: "Informe nome da rede Wi-Fi (SSID), senha (se constar na fonte, marcando sensitive=true), velocidade contratada, Smart TV, streaming, som e voltagem das tomadas."
+    aliases:
+      - "Wi-Fi e dispositivos eletronicos"
+      - "Wifi e dispositivos eletrônicos"
+    field_type: "text"
+    sensitive: true
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "meal_plan"
+    stays_label: "Plano de alimentação"
+    description: "informar se existe plano de alimentação e suas regras."
+    instructions: "Esclareça se café da manhã ou refeições estão inclusos ou disponíveis à parte, horários e regras, ou se a locação é exclusivamente sem alimentação."
+    aliases:
+      - "Plano de alimentacao"
+      - "Alimentação e café da manhã"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1200
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "damages_or_infractions"
+    stays_label: "Caso de avarias ou infrações"
+    description: "procedimento em caso de identificação ou ocorrência de avarias, infrações e mau uso."
+    instructions: "Descreva como o hóspede deve comunicar danos pré-existentes na chegada ou avarias acidentais durante a estadia, e o fluxo operacional adotado."
+    aliases:
+      - "Caso de avarias ou infracoes"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "trash_and_maintenance"
+    stays_label: "Lixo e manutenções"
+    description: "descarte de lixo e funcionamento de serviços de manutenção, piscina, jardim ou similares."
+    instructions: "Explique onde e quando descartar lixo orgânico/reciclável e informe dias/horários de piscineiro, jardineiro ou manutenção preventiva."
+    aliases:
+      - "Lixo e manutencoes"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "emergency_info"
+    stays_label: "Em caso de emergência"
+    description: "instruções de suporte e telefones locais verificados de hospital, unidade de saúde, polícia, bombeiros, Defesa Civil e clínica veterinária."
+    instructions: "Inclua somente telefones e orientações de emergência presentes e verificados na fonte. NUNCA invente telefones de hospitais ou clínicas locais."
+    aliases:
+      - "Em caso de emergencia"
+      - "Emergências"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "other_general_instructions"
+    stays_label: "Demais instruções gerais"
+    description: "peculiaridades não contempladas nos outros campos."
+    instructions: "Registre particularidades da propriedade (ex.: aquecimento a gás, fossa séptica, pressão da água, uso de lareira, regras específicas locais) que não se encaixem nos demais campos."
+    aliases:
+      - "Demais instrucoes gerais"
+      - "Outras instruções"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "schedule_policies"
+    stays_label: "Políticas de horários"
+    description: "horários e regras de check-in, check-out, silêncio e demais restrições de horário."
+    instructions: "Informe horários exatos de check-in, check-out, lei do silêncio e horários de uso de áreas comuns presentes na fonte."
+    aliases:
+      - "Politicas de horarios"
+      - "Horários de check-in e check-out"
+    field_type: "text"
+    sensitive: false
+    required: true
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "pet_policies"
+    stays_label: "Políticas de pets"
+    description: "permissão, limites, taxas, responsabilidades e restrições relacionadas a animais."
+    instructions: "Informe se animais de estimação são permitidos ou proibidos, porte aceito, limite de quantidade, taxas extras e regras de circulação/higiene."
+    aliases:
+      - "Politicas de pets"
+      - "Regras para animais"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "children_policies"
+    stays_label: "Políticas de crianças"
+    description: "regras e informações específicas para crianças."
+    instructions: "Informe regras sobre acomodação de crianças, contagem na capacidade máxima, disponibilidade de berço/cadeirão e orientações de supervisão."
+    aliases:
+      - "Politicas de criancas"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "extra_guests_day_use_policies"
+    stays_label: "Políticas de hóspedes adicionais ou Day Use"
+    description: "visitantes, hóspedes adicionais, limite de ocupação e day use."
+    instructions: "Especifique se visitas ou day use são permitidos ou proibidos, limite máximo de ocupação, cobrança por hóspede extra e necessidade de autorização prévia."
+    aliases:
+      - "Politicas de hospedes adicionais ou Day Use"
+      - "Políticas de visitantes e Day Use"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "registration_form_policies"
+    stays_label: "Políticas de fichas cadastrais"
+    description: "obrigatoriedade, prazo, documentos e critérios da ficha cadastral."
+    instructions: "Detalhe a obrigatoriedade do envio da ficha cadastral, antecedência mínima exigida antes do check-in e consequências do não preenchimento."
+    aliases:
+      - "Politicas de fichas cadastrais"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "booking_modification_policies"
+    stays_label: "Políticas de alteração da reserva"
+    description: "condições e procedimentos para alterações."
+    instructions: "Informe prazos, condições, taxas ou restrições para alteração de datas ou número de hóspedes em reservas confirmadas."
+    aliases:
+      - "Politicas de alteracao da reserva"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "booking_cancellation_policies"
+    stays_label: "Políticas de cancelamento da reserva"
+    description: "condições e procedimentos de cancelamento."
+    instructions: "Transcreva de forma clara as regras de cancelamento, prazos de reembolso, retenção ou crédito conforme documentado na fonte."
+    aliases:
+      - "Politicas de cancelamento da reserva"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "dot_placeholder"
+    stays_label: "."
+    description: "campo existente no Stays com o nome “.”. Não presumir finalidade. Não preencher automaticamente sem uma regra configurada ou informação explícita."
+    instructions: "NÃO preencha este campo automaticamente. Retorne sempre value=null e status='missing', a menos que exista instrução explícita na configuração."
+    aliases: []
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 500
+    enabled: true
+    allow_auto_fill: false
+
+  - field_key: "damage_and_penalty_policies"
+    stays_label: "Políticas de avarias e penalidades"
+    description: "cobranças, multas, responsabilidades e procedimentos aplicáveis."
+    instructions: "Descreva regras sobre caução, reposição de itens quebrados, multas condominiais ou contratuais por descumprimento de regras e prazos de vistoria."
+    aliases:
+      - "Politicas de avarias e penalidades"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "general_usage_policies"
+    stays_label: "Políticas de utilização geral da unidade"
+    description: "regras gerais de uso e conservação."
+    instructions: "Informe regras sobre fumo/cigarro, festas/eventos, som alto, conservação de móveis/enxoval, economia de energia e uso consciente da unidade."
+    aliases:
+      - "Politicas de utilizacao geral da unidade"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "checkout_rules"
+    stays_label: "Regras de check-out"
+    description: "todas as instruções necessárias para a saída."
+    instructions: "Liste os procedimentos para o momento da saída: devolução de chaves/controles, retirada do lixo, louça, desligamento de luzes/ar-condicionado e vistoria."
+    aliases:
+      - "Instruções de check-out"
+      - "Procedimentos de saída"
+    field_type: "text"
+    sensitive: false
+    required: true
+    max_length: 2000
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "multitemporada_services"
+    stays_label: "Contratação com a Multitemporada - Serviços e experiências"
+    description: "serviços e experiências vendidos pela Multitemporada."
+    instructions: "Informe serviços extras, passeios, pacotes ou experiências comercializados diretamente pela Multitemporada mencionados na fonte."
+    aliases:
+      - "Contratacao com a Multitemporada - Servicos e experiencias"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "pro_services"
+    stays_label: "Contratação com o PRO - Serviços e experiências"
+    description: "serviços e experiências vendidos pelo responsável operacional ou parceiro PRO."
+    instructions: "Informe serviços adicionais prestados ou comercializados pelo parceiro operacional local/PRO (ex.: limpeza extra, lenha, café colonial, transfer local)."
+    aliases:
+      - "Contratacao com o PRO - Servicos e experiencias"
+    field_type: "text"
+    sensitive: false
+    required: false
+    max_length: 1500
+    enabled: true
+    allow_auto_fill: true
+
+  - field_key: "property_review_link"
+    stays_label: "Link para avaliar a propriedade"
+    description: "preferencialmente o link do perfil da propriedade no Google."
+    instructions: "Retorne SOMENTE a URL para avaliação da propriedade (preferencialmente link do Google Meu Negócio / Google Reviews). Não inclua texto adicional."
+    aliases:
+      - "Link de avaliação"
+      - "Avaliar no Google"
+    field_type: "url"
+    sensitive: false
+    required: false
+    max_length: 500
+    enabled: true
+    allow_auto_fill: true

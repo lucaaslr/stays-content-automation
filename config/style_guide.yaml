@@ -1,0 +1,110 @@
+schema_version: "1.0"
+# Padrão de redação e formatação dos campos personalizados do Stays.
+# Derivado dos campos já preenchidos no imóvel de referência SR08H
+# (https://ssmt.stays.com.br/i/apartment/SR08H/setup). Somente a ESTRUTURA foi copiada;
+# nenhum dado do imóvel de referência deve aparecer em outros imóveis.
+reference_property: "SR08H"
+
+# Marcação que a LLM deve usar no campo "value". O conversor (formatting.py) transforma em
+# HTML do Summernote: cada linha vira <p>, linha vazia vira <p><br></p> e **texto** vira <b>.
+markup_rules: |
+  - Cada linha do texto vira um parágrafo separado no Stays. Use "\n" para quebrar linhas.
+  - Use uma linha vazia ("\n\n") apenas para separar blocos/seções; nunca mais de uma seguida.
+  - Títulos de seção ficam sozinhos na linha, em negrito: **Título da seção:**
+  - Itens de lista começam com "- " (hífen e espaço). Passos sequenciais usam "1. ", "2. ", "3. ".
+  - Pares de informação usam "Rótulo: valor." (ex.: "Acessibilidade: a unidade não é adaptada para cadeirantes.").
+  - Avisos críticos podem usar negrito curto no início da linha: **⚠️ Atenção**: texto.
+  - Não use HTML, Markdown de títulos (#), tabelas, itálico ou links formatados; links ficam como texto puro.
+
+writing_rules: |
+  - Português do Brasil, tom cordial, profissional e objetivo, dirigido ao hóspede.
+  - Frases completas, terminando com ponto final (inclusive itens de lista).
+  - Use a 1ª pessoa do plural para a propriedade ("Disponibilizamos", "Solicitamos") e trate o hóspede por "você" quando necessário.
+  - Horários no formato "15h", "8h30" e intervalos "das 15h às 22h" (nunca "15:00").
+  - Valores monetários no formato "R$ 150,00".
+  - Quantidades com algarismos: "1 cama de casal Queen-size", "2 banheiros".
+  - Sem romantismo ou linguagem publicitária: apenas informação útil e verificável na fonte.
+  - Emojis apenas em títulos de destaque, com moderação (ex.: ⚠️, 📝); nunca no corpo do texto.
+  - Campos de link ou endereço contêm somente o link/endereço, sem texto adicional.
+
+# Formato esperado por campo (field_key do config/custom_fields.yaml).
+field_formats:
+  post_booking_notice: >
+    Blocos por tema, cada um com título em negrito e caixa alta precedido de emoji
+    (ex.: **🛏️ SUA ACOMODAÇÃO**, **☕ CAFÉ DA MANHÃ E ALIMENTAÇÃO**), seguido de 1 parágrafo
+    objetivo. Separe os blocos com a linha "_________________________________________________________________".
+  property_address: "Uma única linha: logradouro, número - bairro, cidade - UF, CEP."
+  location_notes: "Itens com '- ', um por linha, com referências e orientações para encontrar o imóvel."
+  google_maps_url: "Somente o link, uma linha."
+  checkin_instructions: >
+    Título de destaque em negrito e caixa alta (ex.: **AVISE PREVIAMENTE SUA CHEGADA!**) seguido de
+    parágrafo(s) com horários, antecedência e regras de chegada.
+  registration_instructions: >
+    Parágrafo explicativo; linha vazia; título em negrito com o link na linha seguinte
+    (ex.: **📝 Preencha sua ficha pelo link:**); linha vazia; dicas em linhas "Rótulo: texto".
+  registration_form: "Somente o link, uma linha."
+  access_instructions: >
+    Título em negrito; parágrafos curtos; passos ou itens com '- ', um por linha;
+    destaque final de atenção quando houver.
+  local_host: "1 a 2 parágrafos curtos explicando quem presta o suporte local e como contatar."
+  host_whatsapp_url: "Somente o link, uma linha."
+  common_areas: >
+    Parágrafo de apresentação da propriedade; linha vazia; frase introdutória terminando em ':'
+    e lista de áreas comuns com '- ', um item por linha.
+  general_amenities: >
+    Uma comodidade por linha, sem hífen, frases curtas terminadas em ponto
+    (ex.: "1 cama de casal Queen-size.", "Ar-condicionado quente e frio.").
+  kitchen_and_bbq: "Parágrafo curto; se houver itens, título **Itens disponíveis:** e lista com '- '."
+  rooms_beds_climate: >
+    Parágrafo único e objetivo com quartos, camas, banheiros e climatização; para vários quartos,
+    uma linha por quarto com '- '.
+  accessibility_and_safety: >
+    Linhas "Rótulo: valor." (ex.: "Acesso à unidade: ...", "Acessibilidade: ...", "Monitoramento: ...");
+    alerta final como **⚠️ Atenção**: texto.
+  parking: "Parágrafo curto com quantidade de vagas, tipo (coberta/descoberta), custo e localização."
+  bed_and_bath_linen: >
+    Seções com título em negrito terminado em ':' (ex.: **Disponibilizamos aos hóspedes:**,
+    **Condições de troca:**, **Solicitações adicionais:**), itens um por linha terminados em ';'
+    e o último em '.', separando as seções com linha vazia.
+  wifi_and_electronics: "Primeira linha em negrito com o resumo da internet; detalhes com '- ', um por linha."
+  meal_plan: >
+    Parágrafo de apresentação; linha vazia; **Itens disponíveis:** com itens um por linha;
+    linha vazia; **Regras e orientações:** com itens '- '.
+  damages_or_infractions: >
+    Orientações gerais com '- '; linha vazia; seções em negrito com tabela de valores
+    em linhas "Item: R$ 0,00".
+  trash_and_maintenance: "Itens com '- ' sobre descarte de lixo, coleta e manutenções."
+  emergency_info: >
+    Parágrafo introdutório; linha vazia; **Telefones de emergência**; linha vazia; uma linha por
+    serviço "Serviço – número: descrição."; seções seguintes (ex.: **Hospitais**) no mesmo padrão.
+  other_general_instructions: "Lista de regras e peculiaridades, uma por linha com '- '."
+  schedule_policies: >
+    Seções **Check-in** e **Check-out** em negrito (sem dois-pontos), cada uma com itens '- '
+    (ex.: "- Horário: das 15h às 22h.").
+  pet_policies: "Itens com '- ': permissão, porte/peso, taxa, regras de convivência e responsabilidades."
+  children_policies: "Parágrafo curto ou itens com '- ' com idades aceitas, berço/cama extra e restrições."
+  extra_guests_day_use_policies: "Itens com '- ' sobre visitas, hóspedes adicionais e day use."
+  registration_form_policies: >
+    Mesmo padrão de registration_instructions: parágrafo explicativo, link sob título em negrito
+    e **Dicas para facilitar o preenchimento:** com linhas "Rótulo: texto".
+  booking_modification_policies: >
+    Seções em negrito por tipo de alteração (ex.: **Alteração do número de hóspedes**,
+    **Alteração de datas ou reagendamento**), cada uma com itens '- ', separadas por linha vazia.
+  booking_cancellation_policies: "Seção **Cancelamento e reembolso** com itens '- '."
+  dot_placeholder: >
+    Primeira linha em negrito terminada em ':' apresentando o serviço/pacote; itens '- ';
+    **Condições de contratação:** com linhas "- Rótulo: valor.".
+  damage_and_penalty_policies: >
+    Orientações gerais com '- '; linha vazia; **Atenção às roupas de cama e banho:** e demais
+    seções em negrito com itens '- '.
+  general_usage_policies: "Itens com '- ', uma regra por linha (fumo, festas, silêncio, áreas comuns)."
+  checkout_rules: >
+    Título **Para realizar seu check-out, siga as orientações abaixo:** seguido de passos numerados
+    "1. ", "2. "; linha vazia; seções complementares em negrito (ex.: **Vistoria da rouparia**).
+  multitemporada_services: >
+    Título do serviço em negrito e caixa alta; linha vazia; descrição; linha vazia;
+    "Condições de contratação:" com itens '- '.
+  pro_services: >
+    Seções em negrito por serviço (ex.: **Consumo do frigobar**), parágrafo explicativo e
+    preços em itens "- Item: R$ 0,00".
+  property_review_link: "Somente o link, uma linha."
